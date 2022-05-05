@@ -1,0 +1,14 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  mq:
+    container_name: firma_mq   
+    build: 
+      dockerfile: ./Dockerfile
+      context: .
+    environment:
+      - RABBITMQ_DEFAULT_USER=myuser
+      - RABBITMQ_DEFAULT_PASS=mypassword      
+    ports:
+      - 15672:15672
+      - 5672:5672
+
