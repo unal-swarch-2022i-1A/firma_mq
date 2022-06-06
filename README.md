@@ -22,4 +22,5 @@ docker-compose --project-name "firma_mq" down
 docker-compose --project-name "firma_mq" up --detach
 docker-compose --project-name "firma_mq" logs -f --tail 1000 
 ```
-
+## Administrador local web
+En http://localhost:15672/ ingresar con el usuario `firma_mq` y la contraseña `[R6mF+wkA^9Re)`:
