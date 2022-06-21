@@ -18,9 +18,16 @@ Pero las credenciales por defecto las cambiamos en las variables de entorno del 
 
 ## Lanzamiento para contenedor independiente
 ```bash
-docker-compose --project-name "firma_mq" down
-docker-compose --project-name "firma_mq" up --detach
-docker-compose --project-name "firma_mq" logs -f --tail 1000 
+docker rm -f firma_mq && \
+docker run -dit \
+      --name firma_mq \
+      --env RABBITMQ_DEFAULT_USER=firma_mq \
+      --env RABBITMQ_DEFAULT_PASS="[R6mF+wkA^9Re)" \
+      -p 15672:15672 \
+      -p 5672:5672 \
+      rabbitmq:3-management-alpine && \
+docker logs --tail 1000 -f firma_mq  
+docker exec -it firma_mq /bin/bash      
 ```
 ## Administrador local web
 En http://localhost:15672/ ingresar con el usuario `firma_mq` y la contraseña `[R6mF+wkA^9Re)`:
