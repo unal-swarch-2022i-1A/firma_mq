@@ -18,14 +18,13 @@ Pero las credenciales por defecto las cambiamos en las variables de entorno del 
 
 ## Lanzamiento para contenedor independiente
 ```bash
+docker build -t firma_mq:latest . &&\
 docker rm -f firma_mq && \
 docker run -dit \
       --name firma_mq \
-      --env RABBITMQ_DEFAULT_USER=firma_mq \
-      --env RABBITMQ_DEFAULT_PASS="[R6mF+wkA^9Re)" \
       -p 15672:15672 \
       -p 5672:5672 \
-      rabbitmq:3-management-alpine && \
+      firma_mq:latest && \
 docker logs --tail 1000 -f firma_mq  
 docker exec -it firma_mq /bin/bash      
 ```
